@@ -37,12 +37,20 @@ export async function POST(req: Request) {
       END OF CONTEXT BLOCK
       AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
       If the context does not provide the answer to question, the AI assistant will say, "I'm sorry, but I don't know the answer to that question".
+      If the context is , the AI assistant will say, "I'm sorry, but I don't know the answer to that question".
       AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
       AI assistant will not invent anything that is not drawn directly from the context.
       `,
       },
     ]
 
+    console.log('the value of prompt is ', prompt);
+    console.log('the value of context is ', context);
+    console.log('the value of messages is ', messages);
+    let post_prompt = ".Give the information only from the provided CONTEXT. Do not give me any information that are" +
+    " not mentioned in the provided CONTEXT."
+    messages[messages.length - 1].content = messages[messages.length - 1].content + post_prompt;
+    console.log('the value of messages after post prompt addition is ', ...messages.filter((message: Message) => message.role === 'user'));
     // Ask OpenAI for a streaming chat completion given the prompt
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',

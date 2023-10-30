@@ -11,8 +11,8 @@ export const urls = [{
   loading: false,
 },
 {
-  url: "https://www.cbssports.com/nba/news/matisse-thybulle-to-stay-with-blazers-who-match-mavericks-three-year-33-million-deal-per-report/",
-  title: "Matisee Thybulle",
+  url: "https://www.tax.newmexico.gov/sitemap_index.xml",
+  title: "New Mexico - How do I file my taxes",
   seeded: false,
   loading: false,
 }]
